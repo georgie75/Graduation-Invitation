@@ -12,7 +12,7 @@ const stagger = {
 };
 
 export function InvitationHero({ guestName }: { guestName?: string }) {
-  const { days, hours, minutes, seconds, expired } = useCountdown();
+  const { days, hours, minutes, seconds } = useCountdown();
 
   return (
     <section className="relative min-h-dvh flex flex-col items-center justify-center overflow-hidden px-mobile md:px-desktop" id="hero">
