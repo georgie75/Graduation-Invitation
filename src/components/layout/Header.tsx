@@ -8,7 +8,7 @@ export function Header() {
           to="/"
           className="font-heading text-heading text-primary"
         >
-          Kevin Jten
+          Kevin Iten
         </Link>
         <span className="font-caption text-caption uppercase tracking-[0.2em] text-secondary-dark">
           Class of 2026

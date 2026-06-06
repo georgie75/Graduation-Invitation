@@ -21,7 +21,7 @@ const fadeUp = {
   },
 };
 
-export function HeroSection() {
+export function HeroSection({ guestName, inviteSlug }: { guestName: string; inviteSlug: string }) {
   const navigate = useNavigate();
 
   return (
@@ -49,7 +49,7 @@ export function HeroSection() {
           variants={fadeUp}
           className="font-heading font-bold text-[30px] md:text-[60px] text-on-primary mb-6 md:mb-4 leading-[1.1]"
         >
-          Carlos Martínez
+          {guestName}
         </motion.h1>
 
         <motion.p
@@ -75,7 +75,7 @@ export function HeroSection() {
 
         <motion.button
           variants={fadeUp}
-          onClick={() => navigate("/invite/carlos-martinez")}
+          onClick={() => navigate(`/invite/${inviteSlug}/invitation`)}
           className="group relative px-6 py-3 md:px-12 md:py-6 bg-[#AF8D11] text-on-secondary rounded-full overflow-hidden transition-all duration-300 hover:bg-secondary-light hover:text-secondary-dark active:scale-95 shadow-xl shadow-black/20 font-heading text-[14px] md:text-[20px] tracking-widest uppercase"
         >
           <span className="relative z-10">Abrir Invitación</span>

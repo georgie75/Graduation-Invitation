@@ -11,7 +11,7 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
 };
 
-export function InvitationHero() {
+export function InvitationHero({ guestName }: { guestName?: string }) {
   const { days, hours, minutes, seconds, expired } = useCountdown();
 
   return (
@@ -19,9 +19,16 @@ export function InvitationHero() {
       <div className="absolute inset-0 bg-hero" />
 
       <motion.div className="relative z-10 w-full max-w-5xl flex flex-col items-center text-center" variants={stagger} initial="hidden" animate="visible">
+        {guestName && (
+          <motion.div variants={fadeUp} className="mb-2">
+            <p className="font-body text-[15px] md:text-[18px] text-secondary-light/90 tracking-[0.15em] uppercase">
+              Querido/a {guestName}
+            </p>
+          </motion.div>
+        )}
         <motion.div variants={fadeUp} className="mb-8 md:mb-12">
           <h1 className="font-heading text-display-mobile md:text-[80px] text-white drop-shadow-2xl leading-tight">
-            Kevin Jten's
+            Kevin Iten's
             <br />
             <span className="text-secondary-light">Graduation</span>
           </h1>

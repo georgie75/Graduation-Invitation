@@ -7,7 +7,7 @@ export function InvitationFooter() {
             school
           </span>
           <span className="font-heading text-heading text-primary tracking-widest">
-            KEVIN JTEN
+            Kevin Iten
           </span>
         </div>
 
@@ -24,7 +24,7 @@ export function InvitationFooter() {
         <div className="h-px w-full max-w-lg bg-secondary-dark/10" />
 
         <p className="font-body text-[10px] uppercase tracking-widest text-on-surface/50">
-          &copy; 2026 THE GRADUATION OF KEVIN JTEN
+          &copy; 2026 THE GRADUATION OF Kevin Iten
         </p>
       </div>
     </footer>

@@ -10,7 +10,7 @@ const details = [
     icon: "location_on",
     label: "Lugar",
     title: "Colegio de Abogados de Honduras",
-    sub: "Tegucigalpa, Honduras",
+    sub: "Juticalpa, Olancho",
   },
   {
     icon: "calendar_today",

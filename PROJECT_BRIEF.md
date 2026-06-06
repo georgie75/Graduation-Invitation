@@ -13,7 +13,7 @@ Graduate Information
 
 Graduate Name:
 
-Kevin Jten
+Kevin IteM
 
 School:
 
@@ -31,7 +31,7 @@ Event Information
 
 Location:
 
-Colegio de Abogados
+Colegio de Abogados, Juticalpa, Olancho
 
 Date:
 
@@ -41,9 +41,9 @@ Time:
 
 7:00 PM
 
-Invita:
+Invita: Kevin Item
 
-Kevin Jten
+Papas: Walter Iten y Bety Ponce
 
 Personal Message
 
@@ -63,7 +63,7 @@ Secondary:
 
 #D4AF37
 
-Tertiary: 
+Tertiary:
 
 #461400
 
