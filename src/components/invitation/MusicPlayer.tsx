@@ -16,7 +16,8 @@ export function MusicPlayer() {
     audio.addEventListener("play", syncPlayingState);
     audio.addEventListener("pause", syncPlayingState);
 
-    audio.play()
+    audio
+      .play()
       .then(syncPlayingState)
       .catch(() => syncPlayingState());
 
@@ -24,7 +25,10 @@ export function MusicPlayer() {
       if (document.hidden) {
         audio.pause();
       } else if (!document.hidden && !wasManuallyPaused.current) {
-        audio.play().then(syncPlayingState).catch(() => syncPlayingState());
+        audio
+          .play()
+          .then(syncPlayingState)
+          .catch(() => syncPlayingState());
       }
     }
     document.addEventListener("visibilitychange", onVisibilityChange);
@@ -46,18 +50,18 @@ export function MusicPlayer() {
       wasManuallyPaused.current = true;
     } else {
       wasManuallyPaused.current = false;
-      audio.play().then(() => setPlaying(!audio.paused)).catch(() => setPlaying(!audio.paused));
+      audio
+        .play()
+        .then(() => setPlaying(!audio.paused))
+        .catch(() => setPlaying(!audio.paused));
     }
   }
 
   return (
     <button
       onClick={toggle}
-      className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-primary/90 shadow-xl text-white flex items-center justify-center hover:bg-primary transition-colors backdrop-blur-sm"
-    >
-      <span className="material-symbols-outlined text-2xl">
-        {playing ? "music_note" : "music_off"}
-      </span>
+      className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-primary/90 shadow-xl text-white flex items-center justify-center hover:bg-primary transition-colors backdrop-blur-sm">
+      <span className="material-symbols-outlined text-2xl">{playing ? "music_note" : "music_off"}</span>
     </button>
   );
 }
