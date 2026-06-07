@@ -3,6 +3,7 @@ import songUrl from "../../assets/graduationsong.m4a";
 
 export function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const wasManuallyPaused = useRef(false);
   const [playing, setPlaying] = useState(true);
 
   useEffect(() => {
@@ -10,12 +11,20 @@ export function MusicPlayer() {
     audio.loop = true;
     audioRef.current = audio;
 
-    audio.play().catch(() => setPlaying(false));
+    const syncPlayingState = () => setPlaying(!audio.paused);
+
+    audio.addEventListener("play", syncPlayingState);
+    audio.addEventListener("pause", syncPlayingState);
+
+    audio.play()
+      .then(syncPlayingState)
+      .catch(() => syncPlayingState());
 
     function onVisibilityChange() {
       if (document.hidden) {
         audio.pause();
-        setPlaying(false);
+      } else if (!document.hidden && !wasManuallyPaused.current) {
+        audio.play().then(syncPlayingState).catch(() => syncPlayingState());
       }
     }
     document.addEventListener("visibilitychange", onVisibilityChange);
@@ -23,6 +32,8 @@ export function MusicPlayer() {
     return () => {
       audio.pause();
       audio.src = "";
+      audio.removeEventListener("play", syncPlayingState);
+      audio.removeEventListener("pause", syncPlayingState);
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
   }, []);
@@ -32,9 +43,10 @@ export function MusicPlayer() {
     if (!audio) return;
     if (playing) {
       audio.pause();
-      setPlaying(false);
+      wasManuallyPaused.current = true;
     } else {
-      audio.play().then(() => setPlaying(true)).catch(() => {});
+      wasManuallyPaused.current = false;
+      audio.play().then(() => setPlaying(!audio.paused)).catch(() => setPlaying(!audio.paused));
     }
   }
 
